@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kerala 56 - Dileep P</title>
+<meta name="description" content="An online table for 56, the Kerala card game, with computer players that bid by simulation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Instrument+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="index.html">Dileep P</a>
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="work.html">Work</a>
+        <a href="kerala56.html" aria-current="page">Kerala 56</a>
+        <a href="photos.html">Photos</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <h1 class="page-title">56, the card game from Kerala, online</h1>
+      <p class="standfirst">Open a link, type your name and sit down. Empty seats are filled by computer players, so a game can start with one person or eight.</p>
+      <p class="suits" aria-hidden="true">&spades; <span class="warm">&hearts;</span> &clubs; <span class="warm">&diams;</span></p>
+      <a class="button" href="https://kerala-56.onrender.com">Play Kerala 56</a>
+      <a class="button quiet" href="https://github.com/p-dileep/kerala-56">View the source</a>
+      <p class="note">The table sleeps when nobody is playing. The first visit can take up to a minute to wake it.</p>
+
+      <div class="prose">
+        <h2>The game</h2>
+        <p>56 is a trick-taking game for two teams. The Jack is the highest card, then the nine. Before play there is an auction, and the bids are a language: the way you name a suit tells your partners what you hold. Learning that language is most of the game.</p>
+
+        <h2>What it does</h2>
+        <ul>
+          <li>Tables for six players or eight, in the browser, with nothing to install and no account.</li>
+          <li>The bidding language, including the signals partners send each other.</li>
+          <li>Chips carried from hand to hand, with doubling and redoubling.</li>
+          <li>Computer players with names and temperaments: some cautious, some bold, most in between.</li>
+        </ul>
+
+        <h2>How the computer players think</h2>
+        <p>A computer player listens to the auction the way a person does. From each bid it works out which cards the others are likely to hold. Before making a big bid it deals out the unseen cards many times over, plays each deal through, and bids only if its team wins often enough to be worth the risk. I tuned that threshold by having the computer players play each other over and over.</p>
+        <p class="note">Built with Node.js. House rules for 56 vary; these are the ones I play by.</p>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Dr. Dileep P</p>
+      <p>Find me on <a href="https://github.com/p-dileep">GitHub</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,225 @@
+/* Palette drawn from the portrait: navy cap, red shirt, leaf and marigold behind. */
+:root {
+  --paper: #f2f5f9;
+  --panel: #ffffff;
+  --ink: #1a2340;
+  --ink-soft: #55607c;
+  --rule: #cfd6e3;
+  --red: #c2162f;
+  --leaf: #3f7242;
+  --marigold: #e0a912;
+  --display: "Bricolage Grotesque", "Trebuchet MS", "Segoe UI", sans-serif;
+  --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --measure: 66ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121829;
+    --panel: #1a2238;
+    --ink: #e8ecf5;
+    --ink-soft: #a3adc6;
+    --rule: #2f3a58;
+    --red: #ff6b7d;
+    --leaf: #8fc98f;
+    --marigold: #f2c230;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+img, svg { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--red); text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--marigold); outline-offset: 3px; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+h1 { font-size: clamp(2.6rem, 8vw, 5rem); font-weight: 800; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 700; margin-top: 2.75rem; }
+h3 { font-size: 1.2rem; font-weight: 700; margin-top: 1.75rem; }
+p { margin: 0.9rem 0 0; }
+
+.wrap { width: min(100% - 2.5rem, 68rem); margin-inline: auto; }
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--rule); }
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding-block: 1rem;
+}
+.site-name {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.site-header nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.site-header nav a { color: var(--ink-soft); text-decoration: none; padding-block: 0.25rem; }
+.site-header nav a:hover { color: var(--ink); }
+.site-header nav a[aria-current="page"] {
+  color: var(--ink);
+  box-shadow: inset 0 -3px 0 var(--red);
+}
+
+main { padding-block: 3rem 4rem; }
+
+/* Home hero */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 3rem;
+  align-items: center;
+}
+.hero-text p { max-width: 34rem; font-size: 1.15rem; }
+.hero-text .lede { color: var(--ink-soft); }
+.portrait { position: relative; margin: 0 0 2rem; }
+.portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 4px;
+}
+/* The one flourish: a 16-point constellation that settles out of noise. */
+.constellation {
+  position: absolute;
+  left: -2.25rem;
+  bottom: -2rem;
+  width: 8.5rem;
+  padding: 0.9rem;
+  background: var(--ink);
+  border-radius: 4px;
+}
+.constellation circle {
+  fill: var(--marigold);
+  animation: settle 1.6s cubic-bezier(0.2, 0.9, 0.25, 1) both;
+}
+@media (prefers-color-scheme: dark) {
+  .constellation { background: var(--panel); border: 1px solid var(--rule); }
+}
+@keyframes settle {
+  from { transform: translate(var(--dx), var(--dy)); opacity: 0.35; }
+  to { transform: translate(0, 0); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .constellation circle { animation: none; }
+}
+
+/* Home: the three things */
+.card-grid { margin-top: 4rem; border-top: 2px solid var(--ink); }
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+  gap: 0.25rem 2rem;
+  padding-block: 1.4rem;
+  border-bottom: 1px solid var(--rule);
+  color: inherit;
+  text-decoration: none;
+}
+.card h2 { margin: 0; font-size: 1.5rem; }
+.card p { margin: 0; color: var(--ink-soft); max-width: 40rem; }
+.card:hover h2 { color: var(--red); }
+
+/* Reading pages */
+.page-title { max-width: 18ch; font-size: clamp(2.2rem, 6vw, 3.6rem); }
+.standfirst { max-width: 40rem; font-size: 1.2rem; color: var(--ink-soft); margin-top: 1.25rem; }
+.prose { max-width: var(--measure); }
+.prose ul { padding-left: 1.2rem; margin: 0.9rem 0 0; }
+.prose li { margin-top: 0.4rem; }
+.prose cite { font-style: italic; }
+
+.figure { margin: 2.25rem 0 0; }
+.figure figcaption { color: var(--ink-soft); font-size: 0.95rem; margin-top: 0.6rem; max-width: var(--measure); }
+
+.signals {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 1rem;
+  max-width: 44rem;
+}
+.signals div {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.75rem 0.75rem 0.6rem;
+  text-align: center;
+  font-family: var(--display);
+  font-weight: 700;
+}
+.signals svg { margin-bottom: 0.4rem; }
+.signals line { stroke: var(--rule); stroke-width: 1; }
+.signals circle { fill: var(--red); }
+
+.suits {
+  font-size: 2.2rem;
+  letter-spacing: 0.35em;
+  margin-top: 1.5rem;
+  color: var(--ink);
+}
+.suits .warm { color: var(--red); }
+
+.button {
+  display: inline-block;
+  margin: 1.5rem 0.75rem 0 0;
+  padding: 0.7rem 1.3rem;
+  border-radius: 4px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.button.quiet { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+@media (prefers-color-scheme: dark) {
+  .button { color: #121829; }
+  .button.quiet { color: var(--ink); }
+}
+.note { color: var(--ink-soft); font-size: 0.95rem; }
+
+/* Photos */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--rule); color: var(--ink-soft); font-size: 0.95rem; }
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1.5rem 2.5rem;
+}
+.site-footer p { margin: 0; }
+
+@media (max-width: 700px) {
+  main { padding-block: 2rem 3rem; }
+  .hero { grid-template-columns: 1fr; gap: 2rem; }
+  .portrait { order: -1; max-width: 20rem; margin-left: 1.25rem; }
+  .constellation { left: -1.25rem; bottom: -1.5rem; width: 6.5rem; padding: 0.7rem; }
+  .card { grid-template-columns: 1fr; }
+}

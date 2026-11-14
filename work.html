@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work - Dileep P</title>
+<meta name="description" content="The software Dileep builds: backtesting, monitoring and automation for options trading.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Instrument+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="index.html">Dileep P</a>
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="kerala56.html">Kerala 56</a>
+        <a href="photos.html">Photos</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <h1 class="page-title">Software for testing an idea before betting on it</h1>
+      <p class="standfirst">I trade index options by fixed rules, and I write the software that tests those rules, runs them and watches over them.</p>
+
+      <div class="prose">
+        <h2>A backtesting engine</h2>
+        <p>Given a set of rules, it replays years of minute-by-minute market history and reports what would have happened, with costs and slippage included. Most of the effort goes into the unglamorous parts: holidays, contract changes, gaps in the data, and the many small ways a backtest can flatter itself.</p>
+
+        <h2>A dashboard</h2>
+        <p>A web application that brings the day's positions, market data and research results into one place, so that I can see what the systems are doing without opening five tools.</p>
+
+        <h2>Automated runners</h2>
+        <p>Programs that follow the rules during market hours. Every one runs on paper first, with no real orders, and its decisions are compared against the backtest day by day. Only when the two agree does it go further.</p>
+
+        <h2>Data pipelines and watchdogs</h2>
+        <p>Jobs that collect and clean market data, and monitors that raise an alert when a process stops, a login expires or a clock drifts.</p>
+
+        <h2>How I work</h2>
+        <p>The habit I carried over from research is to distrust a good result until it has been checked against something independent: another data source, another implementation, or live behaviour. I keep a written list of every way a test has fooled me, and each new idea has to get past that list.</p>
+        <p class="note">Built with Python, FastAPI, React and SQLite.</p>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Dr. Dileep P</p>
+      <p>Find me on <a href="https://github.com/p-dileep">GitHub</a></p>
+    </div>
+  </footer>
+</body>
+</html>

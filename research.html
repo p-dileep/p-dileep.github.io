@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research - Dileep P</title>
+<meta name="description" content="PhD research on automatic modulation classification with shallow convolutional neural networks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Instrument+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="index.html">Dileep P</a>
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="research.html" aria-current="page">Research</a>
+        <a href="work.html">Work</a>
+        <a href="kerala56.html">Kerala 56</a>
+        <a href="photos.html">Photos</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <h1 class="page-title">Recognising a radio signal without being told what it is</h1>
+      <p class="standfirst">PhD, Department of Electronics and Electrical Engineering, Indian Institute of Technology Guwahati, 2026.</p>
+
+      <div class="prose">
+        <h2>The problem</h2>
+        <p>Every radio transmitter packs its data onto a carrier wave in a particular pattern, called a modulation. A receiver normally knows the pattern in advance. Sometimes it does not: a radio that shares spectrum with others, or a monitoring station, has to work out the pattern from the signal alone. That task is automatic modulation classification.</p>
+
+        <figure class="figure">
+          <div class="signals"><div><svg viewBox="0 0 100 100" role="img" aria-label="BPSK constellation"><line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/><circle cx="20.0" cy="50.0" r="3.6"/><circle cx="80.0" cy="50.0" r="3.6"/></svg>BPSK</div><div><svg viewBox="0 0 100 100" role="img" aria-label="QPSK constellation"><line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/><circle cx="26.0" cy="74.0" r="3.6"/><circle cx="26.0" cy="26.0" r="3.6"/><circle cx="74.0" cy="74.0" r="3.6"/><circle cx="74.0" cy="26.0" r="3.6"/></svg>QPSK</div><div><svg viewBox="0 0 100 100" role="img" aria-label="8PSK constellation"><line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/><circle cx="82.0" cy="50.0" r="3.6"/><circle cx="72.6" cy="27.4" r="3.6"/><circle cx="50.0" cy="18.0" r="3.6"/><circle cx="27.4" cy="27.4" r="3.6"/><circle cx="18.0" cy="50.0" r="3.6"/><circle cx="27.4" cy="72.6" r="3.6"/><circle cx="50.0" cy="82.0" r="3.6"/><circle cx="72.6" cy="72.6" r="3.6"/></svg>8PSK</div><div><svg viewBox="0 0 100 100" role="img" aria-label="16QAM constellation"><line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/><circle cx="17.0" cy="83.0" r="3.6"/><circle cx="17.0" cy="61.0" r="3.6"/><circle cx="17.0" cy="39.0" r="3.6"/><circle cx="17.0" cy="17.0" r="3.6"/><circle cx="39.0" cy="83.0" r="3.6"/><circle cx="39.0" cy="61.0" r="3.6"/><circle cx="39.0" cy="39.0" r="3.6"/><circle cx="39.0" cy="17.0" r="3.6"/><circle cx="61.0" cy="83.0" r="3.6"/><circle cx="61.0" cy="61.0" r="3.6"/><circle cx="61.0" cy="39.0" r="3.6"/><circle cx="61.0" cy="17.0" r="3.6"/><circle cx="83.0" cy="83.0" r="3.6"/><circle cx="83.0" cy="61.0" r="3.6"/><circle cx="83.0" cy="39.0" r="3.6"/><circle cx="83.0" cy="17.0" r="3.6"/></svg>16QAM</div></div>
+          <figcaption>Four of the modulation patterns, drawn as the points a clean signal lands on. Noise, fading and timing errors smear these points, and at low signal strength they overlap.</figcaption>
+        </figure>
+
+        <h2>What I did</h2>
+        <p>My thesis, <cite>Automatic Modulation Classification using Shallow CNNs</cite>, asks how small a neural network can be and still do this well. A small network matters because it has to run inside a radio, not in a data centre. The networks read the raw received samples directly, with no hand-crafted features.</p>
+        <p>The work has three parts:</p>
+        <ul>
+          <li><strong>One antenna.</strong> Compact convolutional networks that use dropout in place of the usual pooling layers, tested on signals that have passed through fading channels.</li>
+          <li><strong>Several receivers working together.</strong> When individual receivers each hear a weak copy of the signal, combining what they hear recovers accuracy that no single one can reach.</li>
+          <li><strong>Many antennas.</strong> Classification for multi-antenna (MIMO) links, including correlated channels and keyhole channels, where every path is squeezed through a single narrow opening.</li>
+        </ul>
+        <p>Supervisors: Dr. A. Rajesh and Prof. P. K. Bora.</p>
+
+        <h2>Publications</h2>
+        <ul>
+          <li>P. Dileep, A. Singla, D. Das and P. K. Bora, "Deep Learning-Based Automatic Modulation Classification Over MIMO Keyhole Channels," <cite>IEEE Access</cite>, vol. 10, pp. 119566-119574, 2022. <a href="https://doi.org/10.1109/ACCESS.2022.3195229">doi: 10.1109/ACCESS.2022.3195229</a></li>
+          <li>P. Dileep, D. Das and P. K. Bora, "Dense Layer Dropout Based CNN Architecture for Automatic Modulation Classification," <cite>2020 National Conference on Communications (NCC)</cite>, Kharagpur, India, 2020, pp. 1-5. <a href="https://doi.org/10.1109/NCC48643.2020.9055989">doi: 10.1109/NCC48643.2020.9055989</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Dr. Dileep P</p>
+      <p>Find me on <a href="https://github.com/p-dileep">GitHub</a></p>
+    </div>
+  </footer>
+</body>
+</html>
