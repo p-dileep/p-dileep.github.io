@@ -25,8 +25,15 @@
   </header>
   <main>
     <div class="wrap">
-      <h1 class="page-title">Recognising a radio signal without being told what it is</h1>
-      <p class="standfirst">PhD, Department of Electronics and Electrical Engineering, Indian Institute of Technology Guwahati, 2026.</p>
+      <section class="band band-research">
+        <div class="band-text">
+          <h1 class="page-title">Recognising a radio signal without being told what it is</h1>
+          <p class="standfirst">PhD, Department of Electronics and Electrical Engineering, Indian Institute of Technology Guwahati, 2026.</p>
+        </div>
+        <div class="band-art">
+          <svg class="qam" viewBox="0 0 100 100" role="img" aria-label="Sixteen signal points settling out of noise"><line x1="50" y1="2" x2="50" y2="98"/><line x1="2" y1="50" x2="98" y2="50"/><circle cx="17" cy="17" r="3.4" style="--dx:-8px;--dy:-1px"/><circle cx="39" cy="17" r="3.4" style="--dx:5px;--dy:5px"/><circle cx="61" cy="17" r="3.4" style="--dx:9px;--dy:-8px"/><circle cx="83" cy="17" r="3.4" style="--dx:-4px;--dy:8px"/><circle cx="17" cy="39" r="3.4" style="--dx:8px;--dy:6px"/><circle cx="39" cy="39" r="3.4" style="--dx:2px;--dy:7px"/><circle cx="61" cy="39" r="3.4" style="--dx:6px;--dy:4px"/><circle cx="83" cy="39" r="3.4" style="--dx:7px;--dy:3px"/><circle cx="17" cy="61" r="3.4" style="--dx:-4px;--dy:-11px"/><circle cx="39" cy="61" r="3.4" style="--dx:8px;--dy:-9px"/><circle cx="61" cy="61" r="3.4" style="--dx:-8px;--dy:-2px"/><circle cx="83" cy="61" r="3.4" style="--dx:-8px;--dy:3px"/><circle cx="17" cy="83" r="3.4" style="--dx:-11px;--dy:10px"/><circle cx="39" cy="83" r="3.4" style="--dx:4px;--dy:10px"/><circle cx="61" cy="83" r="3.4" style="--dx:-1px;--dy:-5px"/><circle cx="83" cy="83" r="3.4" style="--dx:1px;--dy:-3px"/></svg>
+        </div>
+      </section>
 
       <div class="prose">
         <h2>The problem</h2>
@@ -36,6 +43,23 @@
           <div class="signals"><div><svg viewBox="0 0 100 100" role="img" aria-label="BPSK constellation"><line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/><circle cx="20.0" cy="50.0" r="3.6"/><circle cx="80.0" cy="50.0" r="3.6"/></svg>BPSK</div><div><svg viewBox="0 0 100 100" role="img" aria-label="QPSK constellation"><line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/><circle cx="26.0" cy="74.0" r="3.6"/><circle cx="26.0" cy="26.0" r="3.6"/><circle cx="74.0" cy="74.0" r="3.6"/><circle cx="74.0" cy="26.0" r="3.6"/></svg>QPSK</div><div><svg viewBox="0 0 100 100" role="img" aria-label="8PSK constellation"><line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/><circle cx="82.0" cy="50.0" r="3.6"/><circle cx="72.6" cy="27.4" r="3.6"/><circle cx="50.0" cy="18.0" r="3.6"/><circle cx="27.4" cy="27.4" r="3.6"/><circle cx="18.0" cy="50.0" r="3.6"/><circle cx="27.4" cy="72.6" r="3.6"/><circle cx="50.0" cy="82.0" r="3.6"/><circle cx="72.6" cy="72.6" r="3.6"/></svg>8PSK</div><div><svg viewBox="0 0 100 100" role="img" aria-label="16QAM constellation"><line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/><circle cx="17.0" cy="83.0" r="3.6"/><circle cx="17.0" cy="61.0" r="3.6"/><circle cx="17.0" cy="39.0" r="3.6"/><circle cx="17.0" cy="17.0" r="3.6"/><circle cx="39.0" cy="83.0" r="3.6"/><circle cx="39.0" cy="61.0" r="3.6"/><circle cx="39.0" cy="39.0" r="3.6"/><circle cx="39.0" cy="17.0" r="3.6"/><circle cx="61.0" cy="83.0" r="3.6"/><circle cx="61.0" cy="61.0" r="3.6"/><circle cx="61.0" cy="39.0" r="3.6"/><circle cx="61.0" cy="17.0" r="3.6"/><circle cx="83.0" cy="83.0" r="3.6"/><circle cx="83.0" cy="61.0" r="3.6"/><circle cx="83.0" cy="39.0" r="3.6"/><circle cx="83.0" cy="17.0" r="3.6"/></svg>16QAM</div></div>
           <figcaption>Four of the modulation patterns, drawn as the points a clean signal lands on. Noise, fading and timing errors smear these points, and at low signal strength they overlap.</figcaption>
         </figure>
+
+        <h3>Try it: weaken the signal</h3>
+        <div class="demo" id="signal-demo">
+          <canvas role="img" aria-label="Received samples for the chosen modulation at the chosen signal strength"></canvas>
+          <div>
+            <fieldset>
+              <legend>Modulation</legend>
+              <label class="chip"><input type="radio" name="mod" value="BPSK"><span>BPSK</span></label>
+              <label class="chip"><input type="radio" name="mod" value="QPSK"><span>QPSK</span></label>
+              <label class="chip"><input type="radio" name="mod" value="8PSK"><span>8PSK</span></label>
+              <label class="chip"><input type="radio" name="mod" value="16QAM" checked><span>16QAM</span></label>
+            </fieldset>
+            <label class="range" for="snr">Signal strength: <output for="snr">20 dB</output></label>
+            <input type="range" id="snr" min="0" max="30" value="20" step="1">
+            <p class="note">Drag towards 0 dB and the tidy points dissolve into a cloud. That cloud is what the network has to read.</p>
+          </div>
+        </div>
 
         <h2>What I did</h2>
         <p>My thesis, <cite>Automatic Modulation Classification using Shallow CNNs</cite>, asks how small a neural network can be and still do this well. A small network matters because it has to run inside a radio, not in a data centre. The networks read the raw received samples directly, with no hand-crafted features.</p>
@@ -61,5 +85,6 @@
       <p>Find me on <a href="https://github.com/p-dileep">GitHub</a></p>
     </div>
   </footer>
+<script src="js/signal.js"></script>
 </body>
 </html>

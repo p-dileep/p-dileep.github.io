@@ -223,3 +223,187 @@ main { padding-block: 3rem 4rem; }
   .constellation { left: -1.25rem; bottom: -1.5rem; width: 6.5rem; padding: 0.7rem; }
   .card { grid-template-columns: 1fr; }
 }
+
+/* ---- Section colours: fixed, so the bands read the same in light and dark ---- */
+:root {
+  --navy-fixed: #1a2340;
+  --green-fixed: #2c5a35;
+  --red-fixed: #b9142c;
+  --gold-fixed: #e6b01e;
+  --on-band: #ffffff;
+}
+
+body { overflow-x: clip; }
+main { padding-block: 0 4.5rem; }
+.hero { padding-top: 3.5rem; }
+
+/* Full-width coloured band that opens each section page */
+.band {
+  margin-inline: calc(50% - 50vw);
+  padding: 4rem calc(50vw - 50%) 4.25rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 3rem;
+  align-items: center;
+  color: var(--on-band);
+  margin-bottom: 1rem;
+}
+.band .standfirst { color: rgb(255 255 255 / 0.82); }
+.band .note { color: rgb(255 255 255 / 0.75); margin-top: 1rem; }
+.band-research { background: var(--navy-fixed); }
+.band-work { background: var(--green-fixed); }
+.band-kerala { background: var(--red-fixed); }
+.band-photos { background: var(--gold-fixed); color: var(--navy-fixed); display: block; }
+.band-art { justify-self: center; width: min(100%, 20rem); }
+.band :focus-visible { outline-color: #fff; }
+
+.band-art .qam circle {
+  fill: var(--gold-fixed);
+  animation: settle 1.8s cubic-bezier(0.2, 0.9, 0.25, 1) both;
+}
+.band-art .qam line { stroke: rgb(255 255 255 / 0.25); stroke-width: 0.6; }
+@media (prefers-reduced-motion: reduce) {
+  .band-art .qam circle { animation: none; }
+}
+
+.band-art .curve .grid { stroke: rgb(255 255 255 / 0.18); stroke-width: 1; }
+.band-art .curve .tested { fill: none; stroke: var(--gold-fixed); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.band-art .curve .paper { fill: none; stroke: #fff; stroke-width: 3; stroke-dasharray: 2 7; stroke-linecap: round; }
+.band-art .curve text { fill: rgb(255 255 255 / 0.85); font: 600 11px var(--body); }
+
+.band .button { background: #fff; color: var(--red-fixed); }
+.band .button.quiet { background: transparent; color: #fff; border-color: #fff; }
+
+/* A hand of 56, highest card first */
+.fan { position: relative; height: 11rem; margin: 0.5rem 0 4rem; }
+.fan span {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 5rem;
+  height: 7.2rem;
+  margin-left: -2.5rem;
+  padding: 0.4rem 0.5rem;
+  background: #fff;
+  color: var(--red-fixed);
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgb(40 0 8 / 0.4);
+  font: 800 1.45rem/1 var(--display);
+  transform-origin: 50% 170%;
+  transform: rotate(calc((var(--i) - 2.5) * 12deg));
+}
+.fan small { display: block; font-size: 1.1rem; margin-top: 0.15rem; }
+.fan-caption { text-align: center; font-size: 0.9rem; color: rgb(255 255 255 / 0.8); margin-top: 0.9rem; }
+
+/* Home: three doors, one colour each */
+.panels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 4.5rem;
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 19rem;
+  padding: 1.5rem;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.18s ease;
+}
+.panel:hover { transform: translateY(-4px); }
+.panel-research { background: var(--navy-fixed); }
+.panel-work { background: var(--green-fixed); }
+.panel-kerala { background: var(--red-fixed); }
+.panel .motif { height: 6.5rem; margin-bottom: auto; }
+.panel .motif svg { height: 100%; width: auto; }
+.panel .motif circle { fill: var(--gold-fixed); }
+.panel .motif polyline { fill: none; stroke: var(--gold-fixed); stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; }
+.panel .motif.glyphs { font-size: 2.6rem; letter-spacing: 0.2em; line-height: 6.5rem; }
+.panel h2 { margin: 1.5rem 0 0; font-size: 1.7rem; }
+.panel p { margin: 0.5rem 0 0; color: rgb(255 255 255 / 0.85); font-size: 1rem; line-height: 1.5; }
+@media (prefers-reduced-motion: reduce) {
+  .panel { transition: none; }
+  .panel:hover { transform: none; }
+}
+
+/* Research: the noise demo */
+.demo {
+  display: grid;
+  grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  max-width: 44rem;
+}
+.demo canvas { width: 100%; aspect-ratio: 1; border-radius: 4px; background: var(--paper); }
+.demo fieldset { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.demo legend, .demo label.range { font-weight: 600; padding: 0; margin-bottom: 0.5rem; display: block; }
+.demo .chip { position: relative; }
+.demo .chip input { position: absolute; opacity: 0; inset: 0; }
+.demo .chip span {
+  display: block;
+  padding: 0.35rem 0.8rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  font-family: var(--display);
+  font-weight: 700;
+  cursor: pointer;
+}
+.demo .chip input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.demo .chip input:focus-visible + span { outline: 3px solid var(--marigold); outline-offset: 3px; }
+.demo label.range { margin-top: 1.25rem; }
+.demo output { color: var(--red); font-variant-numeric: tabular-nums; }
+.demo input[type="range"] { width: 100%; accent-color: var(--red); }
+.demo .note { margin-top: 0.75rem; }
+
+/* Work: how an idea earns its way to live */
+.steps {
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 2.5rem 0 0;
+}
+.steps li {
+  counter-increment: step;
+  padding: 1rem 1rem 1.1rem;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--leaf);
+  border-radius: 4px;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+.steps li::before {
+  content: counter(step);
+  display: block;
+  font: 800 1.6rem/1 var(--display);
+  color: var(--leaf);
+  margin-bottom: 0.5rem;
+}
+.steps strong { display: block; color: var(--ink); font-family: var(--display); font-size: 1.1rem; margin-bottom: 0.2rem; }
+
+.gallery img { transition: transform 0.18s ease; }
+.gallery a:hover img { transform: scale(1.015); }
+
+@media (max-width: 800px) {
+  .band { grid-template-columns: 1fr; gap: 2rem; padding-block: 2.5rem 2.75rem; }
+  .band-art { width: min(100%, 16rem); }
+  .panels { grid-template-columns: 1fr; margin-top: 3.5rem; }
+  .panel { min-height: 0; }
+  .panel .motif { height: 4.5rem; margin-bottom: 0; }
+  .panel .motif.glyphs { line-height: 4.5rem; font-size: 2rem; }
+  .demo { grid-template-columns: 1fr; }
+  .demo canvas { max-width: 18rem; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .hero { padding-top: 2rem; }
+}
